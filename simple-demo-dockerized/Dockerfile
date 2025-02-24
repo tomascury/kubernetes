@@ -1,4 +1,12 @@
-FROM ubuntu:latest
-LABEL authors="tomas"
+FROM node:14
+WORKDIR /app
 
-ENTRYPOINT ["top", "-b"]
+COPY package.json .
+
+RUN  npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["node", "app.mjs"]
